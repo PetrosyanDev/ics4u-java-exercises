@@ -14,9 +14,7 @@ public class Exercise04 {
         String fill = "\\";
 
         System.out.println(fill.repeat(width));
-        for (int i = 0; i < height; i++) {
-            System.out.println(fill + " ".repeat(width - 2) + fill);
-        }
+        System.out.print((fill + " ".repeat(width - 2) + fill + "\n").repeat(height - 2));
         System.out.println(fill.repeat(width));
 
     }
