@@ -7,7 +7,7 @@ package assignments.d2025_09_25;
 
 import java.util.Scanner;
 
-public class Q2 {
+public class DaysAlive {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.println("Enter your birthdate...");

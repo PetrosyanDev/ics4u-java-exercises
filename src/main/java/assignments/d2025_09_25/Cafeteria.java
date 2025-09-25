@@ -7,7 +7,7 @@ package assignments.d2025_09_25;
 
 import java.util.Scanner;
 
-public class Q1 {
+public class Cafeteria {
     public static void main(String[] args) {
 
         // PART A
