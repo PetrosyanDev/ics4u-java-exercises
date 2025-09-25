@@ -5,9 +5,11 @@
 
 package exercises.d2025_09_24;
 
+import java.util.Scanner;
+
 public class Exercise02 {
     public static void main(String[] args) {
-        java.util.Scanner in = new java.util.Scanner(System.in);
+        Scanner in = new Scanner(System.in);
 
         System.out.print("Enter length: ");
         double length = Double.parseDouble(in.nextLine().trim());
