@@ -42,5 +42,6 @@ public class DaysAlive {
         System.out.printf("You have been alive for %,d days!\n", days);
         System.out.printf("You have slept for %,d hours!\n", sleepHours);
 
+        s.close();
     }
 }

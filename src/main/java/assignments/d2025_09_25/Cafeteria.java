@@ -46,5 +46,7 @@ public class Cafeteria {
         float change = tendered - total;
 
         System.out.printf("%-23s%8s\n", "CHANGE:", String.format("$%.2f", change));
+
+        s.close();
     }
 }
