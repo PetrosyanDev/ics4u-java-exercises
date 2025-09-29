@@ -40,6 +40,8 @@ int age = 17;
 String name = "Erik";
 ```
 
+---
+
 ## Printing Output
 
 -   `print()` → stays on same line
