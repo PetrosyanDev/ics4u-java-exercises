@@ -3,7 +3,7 @@
  * Date: 10/02/2025
  */
 
-package exercises.d2025_10_02;
+package exercises.d2025_10_01_02;
 
 public class Exercise01 {
     public static void main(String[] args) {

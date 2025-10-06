@@ -4,21 +4,21 @@ import java.util.Scanner;
 
 public class Average {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.print("Enter first value: ");
-        double first = Double.parseDouble(in.nextLine().trim());
+        double first = input.nextDouble();
 
         System.out.print("Enter second value: ");
-        double second = Double.parseDouble(in.nextLine().trim());
+        double second = input.nextDouble();
 
         System.out.print("Enter third value: ");
-        double third = Double.parseDouble(in.nextLine().trim());
+        double third = input.nextDouble();
 
         double average = (first + second + third) / 3.0;
 
-        System.out.printf("Average: %.4f%n", average);
+        System.out.println("Average: " + average);
 
-        in.close();
+        input.close();
     }
 }
