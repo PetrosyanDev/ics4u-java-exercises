@@ -10,9 +10,19 @@ public class Exercise3 {
 
         System.out.print("Enter performance rating (1-5): ");
         int performanceRating = scanner.nextInt();
+        if (performanceRating < 1 || performanceRating > 5) {
+            System.out.println("Invalid input.");
+            scanner.close();
+            return;
+        }
 
         System.out.print("Enter years of service: ");
         int yearsOfService = scanner.nextInt();
+        if (yearsOfService < 0) {
+            System.out.println("Invalid input.");
+            scanner.close();
+            return;
+        }
 
         int bonus;
         if (yearsOfService >= 5) {
