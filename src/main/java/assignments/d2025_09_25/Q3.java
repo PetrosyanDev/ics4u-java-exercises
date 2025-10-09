@@ -5,8 +5,6 @@
  */
 package assignments.d2025_09_25;
 
-import java.util.Scanner;
-
 public class Q3 {
     public static void main(String[] args) {
         // Header

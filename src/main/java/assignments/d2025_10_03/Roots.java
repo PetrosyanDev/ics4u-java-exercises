@@ -27,5 +27,7 @@ public class Roots {
         // Print out the roots
         System.out.println("Root 1 = " + root1);
         System.out.println("Root 2 = " + root2);
+
+        scanner.close();
     }
 }
