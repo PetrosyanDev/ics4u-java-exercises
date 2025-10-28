@@ -11,83 +11,109 @@ import java.util.Scanner;
 public class DiceGame {
     public static void main(String[] args) {
 
-        // Initialize stuff
+        // Initialize rand and scanner
         Random rand = new Random();
         Scanner s = new Scanner(System.in);
 
         // Player information
-        int waiger;
         int points = 500;
-
-        // Dices
-        int dice1P, dice2P, dice1C, dice2C;
+        int wager;
 
         System.out.println("\nGroup Assignment - 10/28/2025");
         System.out.println("DICE GAME");
 
         // Main loop
         while (true) {
+            if (points <= 0) {
+                System.out.print("GAME OVER! Play again (Y or N)? ");
+                String again = s.next();
+                if (again.equalsIgnoreCase("Y")) {
+                    points = 500;
+                    continue;
+                } else {
+                    System.out.println("Thanks for playing! Goodbye!");
+                    break;
+                }
+            }
 
             System.out.printf("\nYou have %d points.%n", points);
-            System.out.print("Enter points to waiger (-1 to QUIT) ");
+            System.out.print("Enter points to wager (-1 to QUIT): ");
 
-            // Scan the input
-            waiger = s.nextInt();
+            // Input check
+            if (!s.hasNextInt()) {
+                s.next();
+                System.out.println("Invalid input. Enter a number.");
+                continue;
+            }
 
-            if (waiger == -1) {
-                // if user wants to quit
+            wager = s.nextInt();
+
+            if (wager == -1) {
+                System.out.println("Thanks for playing! Goodbye!");
                 break;
-            } else if (waiger < 0 || waiger > points) {
-                // Invalid input
-                System.out.println("Invalid input. Try again");
+            } else if (wager <= 0) {
+                System.out.println("You must wager more than 0 points.");
                 continue;
-            } else if (waiger == 0) {
-                // Invalid input (0)
-                System.out.println("You must waiger at least (1) point.");
+            } else if (wager > points) {
+                System.out.println("You cannot wager more than your current points.");
                 continue;
             }
 
-            // Roll the dices
-            dice1P = rand.nextInt(6) + 1;
-            dice2P = rand.nextInt(6) + 1;
-            dice1C = rand.nextInt(6) + 1;
-            dice2C = rand.nextInt(6) + 1;
+            // Dice rolls
+            int dice1P = rand.nextInt(6) + 1;
+            int dice2P = rand.nextInt(6) + 1;
+            int dice1C = rand.nextInt(6) + 1;
+            int dice2C = rand.nextInt(6) + 1;
 
-            // Print the results
-            System.out.printf("You rolled a [%d][%d]%n", dice1P, dice2P);
-            System.out.printf("Computer rolled a [%d][%d]%n%n", dice1C, dice2C);
+            System.out.printf("You rolled [%d][%d]%n", dice1P, dice2P);
+            System.out.printf("Computer rolled [%d][%d]%n", dice1C, dice2C);
 
-            if ((dice1P + dice2P) > (dice1C + dice2C)) {
-                // Player Won
-                points += waiger;
-                System.out.printf("You win %d points.%n", waiger);
-            } else if ((dice1P + dice2P) < (dice1C + dice2C)) {
-                // Player Lost
-                points -= waiger;
-                System.out.printf("You lose %d points.%n", waiger);
+            int playerSum = dice1P + dice2P;
+            int compSum = dice1C + dice2C;
+
+            if (playerSum > compSum) {
+                points += wager;
+                System.out.printf("You win %d points!%n", wager);
+            } else if (playerSum < compSum) {
+                points -= wager;
+                System.out.printf("You lose %d points.%n", wager);
             } else {
-                // If it is a tie
-                System.out.println("It's a tie!\n");
+                // if tie, ask user to reroll or pass
+                while (true) {
+                    System.out.print("It's a tie! Enter 'R' to roll again or 'P' to pass: ");
+                    String choice = s.next();
+                    if (choice.equalsIgnoreCase("R")) {
+                        dice1P = rand.nextInt(6) + 1;
+                        dice2P = rand.nextInt(6) + 1;
+                        dice1C = rand.nextInt(6) + 1;
+                        dice2C = rand.nextInt(6) + 1;
+                        System.out.printf("You rolled [%d][%d]%n", dice1P, dice2P);
+                        System.out.printf("Computer rolled [%d][%d]%n", dice1C, dice2C);
 
-                // ask user if they want to play again
-                System.out.print("It's a tie! Enter 'R' to roll again: ");
-                if (!s.next().equalsIgnoreCase("R"))
-                    break;
-                else
-                    continue;
+                        playerSum = dice1P + dice2P;
+                        compSum = dice1C + dice2C;
+
+                        if (playerSum > compSum) {
+                            points += wager;
+                            System.out.printf("You win %d points!%n", wager);
+                        } else if (playerSum < compSum) {
+                            points -= wager;
+                            System.out.printf("You lose %d points.%n", wager);
+                        } else {
+                            System.out.println("Still a tie! No points won or lost.");
+                            continue;
+                        }
+                        break;
+                    } else if (choice.equalsIgnoreCase("P")) {
+                        System.out.println("You passed. No points won or lost.");
+                        break;
+                    } else {
+                        System.out.println("Invalid input.");
+                    }
+                }
             }
-
-            // Check if game ended
-            if (points <= 0) {
-                System.out.print("GAME OVER! Play again (Y/N)? ");
-                if (s.next().equalsIgnoreCase("Y"))
-                    points = 500;
-                else
-                    break;
-            }
-
         }
 
-        System.out.println("Thanks for playing! Goodbye!");
+        s.close();
     }
 }
