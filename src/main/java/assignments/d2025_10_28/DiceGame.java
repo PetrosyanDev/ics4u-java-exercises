@@ -52,8 +52,11 @@ public class DiceGame {
             if (wager == -1) {
                 System.out.println("Thanks for playing! Goodbye!");
                 break;
-            } else if (wager <= 0) {
+            } else if (wager < 0) {
                 System.out.println("You must wager more than 0 points.");
+                continue;
+            } else if (wager == 0) {
+                System.out.println("You must wager at least one (1) point.");
                 continue;
             } else if (wager > points) {
                 System.out.println("You cannot wager more than your current points.");
@@ -67,8 +70,8 @@ public class DiceGame {
             int dice2C = rand.nextInt(6) + 1;
 
             // Output dice rolls
-            System.out.printf("You rolled [%d][%d]%n", dice1P, dice2P);
-            System.out.printf("Computer rolled [%d][%d]%n", dice1C, dice2C);
+            System.out.printf("%nYou rolled [%d][%d]%n", dice1P, dice2P);
+            System.out.printf("Computer rolled [%d][%d]%n%n", dice1C, dice2C);
 
             int playerSum = dice1P + dice2P;
             int compSum = dice1C + dice2C;
