@@ -48,6 +48,7 @@ public class DiceGame {
 
             wager = s.nextInt();
 
+            // check if wager is correct
             if (wager == -1) {
                 System.out.println("Thanks for playing! Goodbye!");
                 break;
@@ -65,16 +66,20 @@ public class DiceGame {
             int dice1C = rand.nextInt(6) + 1;
             int dice2C = rand.nextInt(6) + 1;
 
+            // Output dice rolls
             System.out.printf("You rolled [%d][%d]%n", dice1P, dice2P);
             System.out.printf("Computer rolled [%d][%d]%n", dice1C, dice2C);
 
             int playerSum = dice1P + dice2P;
             int compSum = dice1C + dice2C;
 
+            // Output results
             if (playerSum > compSum) {
+                // if user won
                 points += wager;
                 System.out.printf("You win %d points!%n", wager);
             } else if (playerSum < compSum) {
+                // if user loses
                 points -= wager;
                 System.out.printf("You lose %d points.%n", wager);
             } else {
@@ -82,17 +87,24 @@ public class DiceGame {
                 while (true) {
                     System.out.print("It's a tie! Enter 'R' to roll again or 'P' to pass: ");
                     String choice = s.next();
+
+                    // Wait for user to enter R
                     if (choice.equalsIgnoreCase("R")) {
+
+                        // roll the dice again
                         dice1P = rand.nextInt(6) + 1;
                         dice2P = rand.nextInt(6) + 1;
                         dice1C = rand.nextInt(6) + 1;
                         dice2C = rand.nextInt(6) + 1;
+
+                        // output dice rolls
                         System.out.printf("You rolled [%d][%d]%n", dice1P, dice2P);
                         System.out.printf("Computer rolled [%d][%d]%n", dice1C, dice2C);
 
                         playerSum = dice1P + dice2P;
                         compSum = dice1C + dice2C;
 
+                        // output results
                         if (playerSum > compSum) {
                             points += wager;
                             System.out.printf("You win %d points!%n", wager);
@@ -105,6 +117,7 @@ public class DiceGame {
                         }
                         break;
                     } else if (choice.equalsIgnoreCase("P")) {
+                        // if user passes
                         System.out.println("You passed. No points won or lost.");
                         break;
                     } else {
