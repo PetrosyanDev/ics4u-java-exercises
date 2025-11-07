@@ -43,7 +43,8 @@ public class DriversLicense {
         String birthdayLast5 = birthDate.toString().substring(0);
 
         // Final
-        System.out.printf("%c%s-%s-%s\n", char1, p1, p2, birthdayLast5);
+        System.out.printf("%n%s%nYour Drivers License name is: %c%s-%s-%s%n%n", "-".repeat(20), char1, p1, p2,
+                birthdayLast5);
 
         s.close();
     }

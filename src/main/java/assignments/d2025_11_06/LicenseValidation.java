@@ -28,7 +28,6 @@ public class LicenseValidation {
         System.out.print("Please enter your birth date(e.g. yymmdd) ");
         String birthDate = s.nextLine();
 
-        System.out.printf("%n%s%n", "-".repeat(20));
         System.out.print("Please enter your driver's license number: ");
         String license = s.nextLine();
 
@@ -44,14 +43,17 @@ public class LicenseValidation {
         String birthdayLast5 = birthDate.substring(birthDate.length() - 5);
         String licenseLast5 = license.substring(license.length() - 5);
 
+        // Formatting
+        System.out.printf("%n%s%n", "-".repeat(20));
+
         // Final Check
         if (!(char1.equals(licensechar1) && char10.equals(licensechar10) && birthdayLast5.equals(licenseLast5))) {
             System.out.printf("%b %b %b", char1.equals(licensechar1), char10.equals(licensechar10),
                     birthdayLast5.equals(licenseLast5));
-            System.out.println("Your driver's license number is INVALID!");
+            System.out.println("Your driver's license number is INVALID!\n");
             return;
         } else {
-            System.out.println("Your driver's license number is VALID!");
+            System.out.println("Your driver's license number is VALID!\n");
         }
 
         s.close();
