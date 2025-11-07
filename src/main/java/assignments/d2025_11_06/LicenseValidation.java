@@ -48,8 +48,6 @@ public class LicenseValidation {
 
         // Final Check
         if (!(char1.equals(licensechar1) && char10.equals(licensechar10) && birthdayLast5.equals(licenseLast5))) {
-            System.out.printf("%b %b %b", char1.equals(licensechar1), char10.equals(licensechar10),
-                    birthdayLast5.equals(licenseLast5));
             System.out.println("Your driver's license number is INVALID!\n");
             return;
         } else {
