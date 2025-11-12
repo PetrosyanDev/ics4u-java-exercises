@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .PHONY: new new-date
 
-# create today's package with 3 exercises
+# create today's package with 3 exercises.
 new:
 	./newday.sh today 3
 
