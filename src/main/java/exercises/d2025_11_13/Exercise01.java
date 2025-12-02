@@ -60,6 +60,7 @@ public class Exercise01 {
         // #4
         System.out.println("\n#4");
         String[] items = { "Laptop", "Mouse", "Keyboard", "Monitor", "Webcam", "Headphones" };
+        String[] items2 = { "Laptop", "Mouse", "Keyboard", "Monitor", "Webcam", "Headphones" };
         boolean found = false;
 
         String input = s.nextLine();
